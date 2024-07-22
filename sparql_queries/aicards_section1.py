@@ -64,12 +64,12 @@ for row in g.query(highrisk_query):
     if getLocal(str(row.developer)) not in developer_list:
         developer_list.append(getLocal(str(row.developer)))
 
-print("System: "+getLocal(str(row.system )))     
-print("1a. Version: "+ getLocal(str(row.version)))
-print(f"1b. Modality: {', '.join(modality_list)}")  
-print(f"1c. Technique: {', '.join(technique_list)}")
-print(f"1d. Provider: {', '.join(provider_list)}")
-print(f"1e. Developer: {', '.join(developer_list)}")  
+print("System: "+getLocal(str(row.system)))     
+print("1-1. Version: "+ getLocal(str(row.version)))
+print(f"1-2. Modality: {', '.join(modality_list)}")  
+print(f"1-3. Technique: {', '.join(technique_list)}")
+print(f"1-4. Provider: {', '.join(provider_list)}")
+print(f"1-5. Developer: {', '.join(developer_list)}")  
 
 
 
