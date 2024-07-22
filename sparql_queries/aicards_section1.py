@@ -34,7 +34,6 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 SELECT  ?system ?version ?modality ?technique ?provider ?developer ?purpose
     WHERE { ?system a airo:AISystem;
-                    airo:hasPurpose ?purpose ;
                     airo:hasVersion ?version ;
                     airo:hasModality ?modality ;
                     airo:usesTechnique ?technique ;
