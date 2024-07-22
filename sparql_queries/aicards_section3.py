@@ -110,7 +110,7 @@ PREFIX airo: <https://w3id.org/airo#>
 PREFIX vair: <https://w3id.org/vair#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
 
-SELECT  DISTINCT ?component ?version ?type ?doc
+SELECT ?component ?version ?type ?doc
     WHERE { 
     ?system a airo:AISystem .
     {
@@ -120,10 +120,12 @@ SELECT  DISTINCT ?component ?version ?type ?doc
     ?componentProperty rdfs:subPropertyOf* airo:hasComponent .
   }     
   
-  ?component rdf:type ?type ;
-                       airo:hasVersion ?version ;
-                       airo:hasDocumentation ?doc .
+    ?component rdf:type ?type ;
+            airo:hasVersion ?version ;
+            airo:hasDocumentation ?doc .       
+
              }
+
 """
 
 for row in g.query(component_info_query):
