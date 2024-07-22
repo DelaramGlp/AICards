@@ -113,13 +113,11 @@ SELECT ?component ?version ?type ?doc
     WHERE { 
     ?system a airo:AISystem .
     ?system ?componentProperty ?component .
-    ?componentProperty rdfs:subPropertyOf* airo:hasComponent .
-      
+    ?componentProperty rdfs:subPropertyOf* airo:hasComponent .    
   
     ?component rdf:type ?type ;
             airo:hasVersion ?version ;
             airo:hasDocumentation ?doc .       
-
              }
 
 """
