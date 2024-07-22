@@ -100,7 +100,6 @@ for row in g.query(component_query):
 print(f"3-3. List of incorporating Components: {', '.join(component_list)}") 
 
 #3-4. Component Information
-
 component_info_query = """
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -113,12 +112,9 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 SELECT ?component ?version ?type ?doc
     WHERE { 
     ?system a airo:AISystem .
-    {
-    ?system airo:hasComponent* ?component .
-  } UNION {
     ?system ?componentProperty ?component .
     ?componentProperty rdfs:subPropertyOf* airo:hasComponent .
-  }     
+      
   
     ?component rdf:type ?type ;
             airo:hasVersion ?version ;
@@ -129,7 +125,7 @@ SELECT ?component ?version ?type ?doc
 """
 
 for row in g.query(component_info_query):
-    print("Component:" + getLocal(str(row.component)) + ", version: "+ getLocal(str(row.version)) + ", type: " + getLocal(str(row.type)) +", documentation: "+ str(row.doc))
+    print("3-4. Component Information:" + getLocal(str(row.component)) + ", version: "+ getLocal(str(row.version)) + ", type: " + getLocal(str(row.type)) +", documentation: "+ str(row.doc))
 
 
 
