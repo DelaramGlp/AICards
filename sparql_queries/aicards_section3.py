@@ -84,11 +84,9 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 SELECT  ?component 
     WHERE { ?system a airo:AISystem .
     {
-    ?system airo:hasComponent ?component .
-  } UNION {
     ?system ?componentProperty ?component .
     ?componentProperty rdfs:subPropertyOf* airo:hasComponent .
-  }}
+  } }
      
 """
 component_list = list ()
