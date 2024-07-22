@@ -1,11 +1,11 @@
 '''
-AI Cards 
-1. General Inforamtion 
-1a.	What is the version of the AI system?
-1b.	What is the modality of the AI system?
-1c.	What techniques used in the AI system?
-1d.	Who is the AI provider?
-1e.	Who is the AI developer?
+AI Cards
+1	General Information
+1-1	What is the version of the AI system?
+1-2	What is the modality of the AI system?
+1-3	What techniques used in the AI system?
+1-4	Who is the AI provider?
+1-5	Who is the AI developer?
 '''
 import rdflib
 
