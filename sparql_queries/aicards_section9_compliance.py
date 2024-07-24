@@ -78,7 +78,7 @@ for row in g.query(standard_query):
     if getLocal(str(row.standard)) not in standard_list:
         standard_list.append(getLocal(str(row.standard)))
 
-print(f"9-. Standard: {', '.join(standard_list)}")  
+print(f"9-2. Standard: {', '.join(standard_list)}")  
 
 #9-3. codes of conduct 
 standard_query = """
