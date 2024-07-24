@@ -1,6 +1,15 @@
 '''
 AI Cards 
 
+3	Components																									
+3-1.	What is the input of the system? 																									
+3-2.	What is the output of the AI system?																									
+3-3.	What are the incorporating components of the system?																									
+3-4.   	For each component																									
+    3-4-1.	What is the version of the component?																									
+    3-4-2.	What is the type of the component?																									
+    3-4-3.	What is the URL to its documentation?																									
+
 '''
 import rdflib
  
