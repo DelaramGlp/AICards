@@ -1,10 +1,9 @@
 '''
 AI Cards 
-8	Pre-determined change
 8-1	For each pre-determined change 
-    8-1-1-	Does the change impact performance?
-    8-1-2-	Which entity is changed?
-    8-1-3-	What is the frequency of change?
+8-1-1-	Which entity is changed?
+8-1-2-	What is the frequency of change?
+8-1-3-	What is the purpose of change?
     
 
 '''
