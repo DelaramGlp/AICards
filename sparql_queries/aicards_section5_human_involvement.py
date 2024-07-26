@@ -6,7 +6,7 @@ AI Cards
 5-2-1-	Are they intended?
 5-2-2-	Are they active?
 5-2-3-	Are they informed?
-5-2-4-	Type of their control
+5-2-4-	Type of their control over output
     
 
 '''
