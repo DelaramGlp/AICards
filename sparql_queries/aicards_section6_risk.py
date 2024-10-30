@@ -45,7 +45,7 @@ SELECT ?system ?risk ?consequence ?impact ?control {
         ?impact a airo:Impact ;
                 airo:hasImpactOnArea vair:RightToNondiscrimination .
 
-        ?control  a airo:Control, vair:TestingMeasure .
+        ?control  a airo:RiskControl, vair:TestingMeasure .
         ?riskRelation rdfs:subPropertyOf* airo:modifiesRiskConcept .
 
         {
