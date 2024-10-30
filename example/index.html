@@ -25,12 +25,7 @@
        <section id="title">
         <h1>AI Cards: Use Case</h1>
         <h3> Protify: an AI-Based Student Proctoring System</h3></div>
-        <p>Delaram Golpayegani, 
-        Isabelle Hupont, 
-        Cecilia Panigutti,
-        Harshvardhan J. Pandit,
-        Sven Schade,
-        Dave Lewis</p>
+        <p> Cite as: Delaram Golpayegani, Isabelle Hupont, Cecilia Panigutti, Harshvardhan J. Pandit, Sven Schade, Declan O’Sullivan, and Dave Lewis. "AI Cards: Towards an Applied Framework for Machine-Readable AI and Risk Documentation Inspired by the EU AI Act" In Annual Privacy Forum, pp. 48-72. Cham: Springer Nature Switzerland, 2024.</p>
     
         <p><small>Copyright © 2024 the document editors/authors. This work is available under the <a href="https://creativecommons.org/licenses/by/4.0/legalcode">Creative Commons Attribution 4.0 International Public License</a>; additional terms may apply</small></p>
         <article>
@@ -97,7 +92,7 @@
             <h5> AI Cards for Proctify </h5>
 
         <figure>
-            <img src="https://raw.githubusercontent.com/DelaramGlp/aicards/main/aicards_proctify.png">
+            <img src="https://github.com/DelaramGlp/aicards/blob/main/aicards_proctify_v1.0.png?raw=true">
         </figure>
     </article>
     </section> 
@@ -106,157 +101,190 @@
 <section id="rdf">
     <article>
         <h5> Proctify's Machine-Readable Specification</h5>
-        <p>The machine-readable specification, represented below, can also be accessed <a href=https://github.com/DelaramGlp/airo/blob/main/usecase/proctify.ttl>here</a>.</p>
+        <p>The machine-readable specification of AI Cards relies on the <a href="https://w3id.org/airo">AI Risk Ontology (AIRO)</a> and <a href="https:w3id.org/vair">Vocabulary of AI Risks (VAIR)</a>.
+            
+            This machine-readable specification, represented below, can also be accessed <a href=https://github.com/DelaramGlp/airo/blob/main/usecase/proctify.ttl>here</a>.</p>
    
         <pre><code>
 
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix dcterms: &lt;http://purl.org/dc/terms#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix airo: &lt;https://w3id.org/airo#&gt; .
-@prefix vair: &lt;https://w3id.org/vair#&gt; .
-@prefix dpv: &lt;https://w3id.org/dpv#&gt; .
-@prefix dqv: &lt;http://www.w3.org/ns/dqv#&gt; .
-@prefix ex: &lt;https://example.com/proctify#&gt; .
-@base &lt;https://example.com/proctify#&gt; .
-
-ex:proctify
-    a airo:AISystem ;
-    airo:hasVersion ex:v_1.0.2 ;
-    dcterms:date "2023-09-11"^^xsd:date ;
-    airo:hasModality ex:software ;
-    airo:usesTechnique ex:deep_learning ;
-    airo:hasInput ex:facial_video ;
-    airo:producesOutput ex:suspicious_behaviour_alarm ;
-    airo:isProvidedBy ex:AIEduX ;
-    airo:isDevelopedBy ex:AIEduX ;
-    airo:hasComponent ex:facial_analysis_toolkit,
-                      ex:susbehaved_model,
-                      ex:susbehaved_dataset ;
-    airo:isAppliedWithinDomain ex:education ;
-    airo:hasPurpose ex:detecting_suspicious_behaviour_during_online_exam,
-                    ex:facial_behaviour_analysis,
-                    ex:video_analysis ;
-    airo:isUsedBy ex:university ;
-    airo:hasAISubject ex:student ;
-    airo:hasUseInstruction &lt;http://tinyurl.com/462b9jyv&gt; ;
-    airo:hasDeploymentInstruction &lt;http://tinyurl.com/4s67jfss&gt; ;
-    airo:hasLevelOfAutomation ex:partial_automation ;
-    dpv:hasHumanInvolvement ex:human_decision ;
-    airo:hasAISubject ex:student,
-                      ex:other_occupant ;
-    airo:hasEndUser ex:instructor ;
-    airo:hasRisk ex:inaccuracy_risk_for_darker_skin ;
-    dqv:hasQualityMeasurement :accuracy_measurement ;
-    airo:hasPreDeterminedChange ex:change_of_model ;
-    airo:compliesToRegulation &lt;http://data.europa.eu/eli/reg/2016/679/oj&gt; ,
-                                  ex:EU_AI_Act ,
-                                  ex:Irish_Data_Protection_Act ;
-    airo:conformsToStandard vair:ISOIEC42001-2023 ,
-                            vair:ISOIEC27001-2022 .
-
-ex:facial_analysis_toolkit
-    a airo:AIComponent ;
-    airo:hasVersion ex:v_3.3.2 ;
-    airo:isProvidedBy ex:FACE_research_group ;
-    airo:hasPurpose ex:extracting_facial_landmark,
-                    ex:extracting_gaze_direction,
-                    ex:extracting_head_pose ;
-    airo:hasDocumentation &lt;http://tinyurl.com/3wnyxyun&gt; .
-
-ex:susbehaved_model
-    a airo:AIComponent,
-      vair:Model ;
-    airo:hasVersion ex:v_1.1.2 ;
-    airo:hasPurpose ex:detecting_suspicious_behaviour,
-                    ex:raising_alarm ;
-    airo:hasDocumentation &lt;http://tinyurl.com/3wnyxyun&gt; .
-
-ex:susbehaved_dataset
-    a airo:AIComponent,
-      vair:Dataset ;
-    airo:hasVersion ex:v_2.0.1 ;
-    airo:hasPurpose ex:train_model ;
-    airo:hasDocumentation &lt;http://tinyurl.com/db4whuw9&gt; .
-
-ex:student
-    a airo:AISubject,
-      vair:NaturalPerson,
-      dpv:DataSubject,
-      airo:IntendedAISubject,
-      airo:ActiveAISubject,
-      airo:InformedAISubject ;
-    airo:hasLevelOfControlOverOutput ex:ex-post_challenge .
-
-ex:other_occupant
-    a airo:AISubject,
-      vair:NaturalPerson,
-      airo:UnintendedAISubject,
-      airo:PassiveAISubject,
-      airo:UninformedAISubject ;
-    airo:hasLevelOfControlOverOutput ex:cannot_opt-out .
-
-ex:instructor
-    a airoext:AIEndUser ;
-    vair:NaturalPerson,
-    airo:IntendedEndUser,
-    airo:ActiveEndUser,
-    airo:InformedEndUser ;
-    airo:hasLevelOfControlOverOutput ex:real-time_corrective .
-
-ex:pdh_1
-    a dpv:PersonalDataHandling ;
-    dpv:hasPurpose ex:facial_analysis ;
-    dpv:hasPersonalData ex:facial_data ;
-    dpv:hasDataSubject ex:student .
-
-ex:facial_data a dpv:SensitivePersonalData .
-
-ex:inaccuracy_risk_for_darker_skin
-    a airo:Risk ;
-    airo:hasLikelihood "Low" ;
-    airo:hasConsequence ex:raise_of_false_alarms_for_darker_skin .
-
-ex:unrepresentative_dataset
-    a airo:RiskSource ;
-    airo:isRiskSourceFor ex:inaccuracy_risk_for_darker_skin ;
-    airo:hasLikelihood "Medium" .
-
-ex:testing_dataset_for_representativeness
-    a airo:Control ;
-    airo:modifiesEvent ex:unrepresentative_dataset .
-
-ex:raise_of_false_alarms_for_darker_skin
-    a airo:Consequence ;
-    airo:hasImpact ex:bias_against_students_with_darker_skin ;
-    airo:hasLikelihood "Low" ;
-    airo:hasSeverity "Medium" .
-
-ex:bias_against_students_with_darker_skin
-    a airo:Impact ;
-    airo:hasImpactOnArea ex:right_to_nondiscrimination ;
-    airo:hasImpactOnEntity ex:student ;
-    airo:hasLikelihood "Low" ;
-    airo:hasSeverity "Very_High" .
-
-ex:accuracy_measurement
-    a dqv:QualityMeasurement ;
-    dqv:computedOn ex:proctify ;
-    dqv:isMeasurementOf ex:alarm_accuracy ;
-    dqv:value "98.9"^^xsd:double .
-
-ex:alarm_accuracy
-    a dqv:Metric ;
-    dqv:expectedDataType xsd:double ;
-    dqv:inDimension ex:accuracy ;
-    airo:hasDocumentation &lt;http://tinyurl.com/mryhr52m&gt; .
-
-ex:change_of_model
-    a airo:Change ;
-    airo:hasSubjectOfChange ex:susbehaved_model ;
-    airo:hasPurpose ex:enhance_fairness ;
-    airo:hasFrequency freq:bimonthly .
+            prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+            @prefix dcterms: <http://purl.org/dc/terms#> .
+            @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+            @prefix freq: <http://purl.org/cld/freq/> .
+            @prefix airo: <https://w3id.org/airo#> .
+            @prefix vair: <https://w3id.org/vair#> .
+            @prefix dpv: <https://w3id.org/dpv#> .
+            @prefix dqv: <http://www.w3.org/ns/dqv#> .
+            @prefix dcat: <https://www.w3.org/TR/vocab-dcat-3/> .
+            @prefix ex: <https://example.com/proctify#> .
+            @base <https://example.com/proctify#> .
+            
+            ex:proctify
+                a airo:AISystem ;
+                airo:hasVersion ex:v_1.0.2 ;
+                dcterms:date "2023-09-11"^^xsd:date ;
+                airo:hasModality vair:Software ;
+                airo:usesTechnique vair:DeepLearning ;
+                airo:hasInput ex:facial_video ;
+                airo:producesOutput ex:suspicious_behaviour_alarm ;
+                airo:isProvidedBy ex:AIEduX ;
+                airo:isDevelopedBy ex:AIEduX ;
+                airo:hasComponent ex:facial_analysis_toolkit,
+                                  ex:susbehaved_dataset ;
+                airo:hasModel     ex:susbehaved_model ;             
+                airo:isAppliedWithinDomain vair:Education ;
+                airo:hasPurpose vair:DetectingProhibitedBehaviourDuringTest,
+                                ex:facial_behaviour_analysis,
+                                ex:video_analysis ;
+                airo:hasCapability ex:facial_recognition ;
+                airo:isDeployedBy ex:university ;
+                #airo:hasUseInstruction <http://tinyurl.com/462b9jyv> ;
+                #airo:hasDeploymentInstruction <http://tinyurl.com/4s67jfss> ;
+                airo:hasAutomationLevel vair:PartialAutomation ;
+                airo:hasAISubject ex:student,
+                                  ex:other_occupant ;
+                airo:hasAIUser ex:instructor ;
+                airo:hasRisk ex:inaccuracy_risk_for_darker_skin ;
+                airo:hasRiskControl ex:bias_testing ;
+                dqv:hasQualityMeasurement ex:alarm_precision_measurement, ex:alarm_recall_measurement, ex:alarm_f_score_measurement   ;
+                airo:hasPreDeterminedChange ex:change_of_model ;
+                airo:compliesWithRegulation  ex:EU_GDPR ,
+                                              ex:Irish_Data_Protection_Act ;
+                airo:conformsToStandard vair:ISOIEC42001-2023 ,
+                                        vair:ISOIEC27001-2022 ;
+                airo:followsCodeOfConduct ex:use_of_AI_and_data_in_teaching_and_learning   ;
+                dpv:hasProcessing ex:processing_1 .                        
+            
+            ex:EU_GDPR dpv:hasJurisdiction ex:EU .
+            ex:Irish_Data_Protection_Act  dpv:hasJurisdiction ex:Ireland .
+            
+            ex:facial_analysis_toolkit
+                a airo:AIComponent ;
+                airo:hasVersion ex:v_3.3.2 ;
+                airo:isProvidedBy ex:FACE_research_group ;
+                airo:hasPurpose ex:extracting_facial_landmark,
+                                ex:extracting_gaze_direction,
+                                ex:extracting_head_pose ;
+                airo:hasDocumentation <http://tinyurl.com/3wnyxyun> .
+            
+            ex:AIEdux  a airo:AIProvider .
+            
+            ex:susbehaved_model
+                a airo:AIModel ;
+                airo:hasVersion ex:v_1.1.2 ;
+                airo:hasPurpose ex:detecting_suspicious_behaviour,
+                                ex:raising_alarm ;
+                airo:hasDocumentation <http://tinyurl.com/3wnyxyun> .
+            
+            ex:susbehaved_dataset
+                a dcat:Dataset ;
+                airo:hasVersion ex:v_2.0.1 ;
+                airo:hasPurpose ex:train_model ;
+                airo:hasDocumentation <http://tinyurl.com/db4whuw9> .
+            
+            ex:student
+                a airo:AISubject,
+                  vair:NaturalPerson,
+                  dpv:DataSubject ;
+                airo:hasHumanInvolvement   vair:IntendedInvolvement, vair:ActiveInvolvement , vair:InformedInvolvement  ; 
+                airo:hasControlOverAIOutput vair:ChallengeOutput .
+            
+            ex:other_occupant
+                a airo:AISubject,
+                  vair:NaturalPerson ;
+                airo:hasHumanInvolvement vair:UnintendedInvolvement, vair:PassiveInvolvement, vair:UninformedInvolvement ;
+                airo:hasControlOverAIOutput vair:CannotOptOutOfOutput .
+            
+            ex:instructor
+                a airo:AIUser ,
+                vair:NaturalPerson ;
+                airo:hasHumanInvolvement vair:IntendedInvolvement, vair:ActiveInvolvement , vair:InformedInvolvement  ; 
+                airo:hasControlOverAIOutput vair:CorrectOutput .
+            
+            ex:processing_1
+                a dpv:Processing ;
+                dpv:hasData ex:facial_data ;
+                dpv:hasLegalBasis dpv:InformedConsent ;
+                dpv:hasDataSubject ex:student .
+            
+            ex:facial_data a dpv:SensitivePersonalData ;
+                    dpv:hasDataSource ex:user_input .
+            
+            ex:inaccuracy_risk_for_darker_skin
+                a airo:Risk ;
+                airo:hasLikelihood "Low" ;
+                airo:hasConsequence ex:raise_of_false_alarms_for_darker_skin .
+            
+            ex:unrepresentative_dataset
+                a airo:RiskSource ;
+                airo:isRiskSourceFor ex:inaccuracy_risk_for_darker_skin ;
+                airo:hasLikelihood "Medium" .
+            
+            ex:testing_dataset_for_representativeness
+                a airo:RiskControl ;
+                airo:modifiesRiskConcept ex:unrepresentative_dataset .
+            
+            ex:raise_of_false_alarms_for_darker_skin
+                a airo:Consequence ;
+                airo:hasImpact ex:bias_against_students_with_darker_skin ;
+                airo:hasLikelihood "Low" ;
+                airo:hasSeverity "Medium" .
+            
+            ex:bias_against_students_with_darker_skin
+                a airo:Impact ;
+                airo:hasImpactOnArea vair:RightToNondiscrimination ;
+                airo:hasImpactOnEntity ex:student ;
+                airo:hasLikelihood "Low" ;
+                airo:hasSeverity "Very_High" .
+            
+            ex:bias_testing
+                a airo:RiskControl , vair:TestingMeasure ;
+                airo:eliminatesRiskConcept ex:bias_against_students_with_darker_skin .
+            
+            
+            ex:alarm_precision_measurement
+                a dqv:QualityMeasurement ;
+                dqv:computedOn ex:proctify ;
+                dqv:isMeasurementOf ex:alarm_precision ;
+                dqv:value "98"^^xsd:double .
+            
+            ex:alarm_precision
+                a dqv:Metric ;
+                dqv:expectedDataType xsd:double ;
+                dqv:inDimension ex:accuracy ;
+                airo:hasDocumentation <http://tinyurl.com/mryhr52m> .
+            
+            ex:alarm_recall_measurement
+                a dqv:QualityMeasurement ;
+                dqv:computedOn ex:proctify ;
+                dqv:isMeasurementOf ex:alarm_recall ;
+                dqv:value "90"^^xsd:double .
+            
+            ex:alarm_reccall
+                a dqv:Metric ;
+                dqv:expectedDataType xsd:double ;
+                dqv:inDimension ex:accuracy ;
+                airo:hasDocumentation <http://tinyurl.com/mryhr52m> .
+            
+             
+            ex:alarm_f_score_measurement 
+                a dqv:QualityMeasurement ;
+                dqv:computedOn ex:proctify ;
+                dqv:isMeasurementOf ex:alarm_f_score ;
+                dqv:value "93"^^xsd:double .
+            
+            ex:alarm_f_score
+                a dqv:Metric ;
+                dqv:expectedDataType xsd:double ;
+                dqv:inDimension ex:accuracy ;
+                airo:hasDocumentation <http://tinyurl.com/mryhr52m> .
+            
+            
+            ex:change_of_model
+                a airo:Change ;
+                airo:hasChangedEntity ex:susbehaved_model ;
+                airo:hasPurpose ex:enhance_fairness ;
+                airo:hasFrequency freq:bimonthly .
 
 
         </code></pre>
